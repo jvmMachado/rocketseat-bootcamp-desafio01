@@ -22,4 +22,17 @@ server.get('/projects', (req, res) => {
   res.status(200).json(projects);
 });
 
+server.put('/projects/:id', (req, res) => {
+  const { id } = req.params;
+  const { newTitle } = req.body;
+
+  const project = projects.find( p => p.id == id);
+
+    project.id = newTitle;
+
+    return res.json(project);
+  }
+
+});
+
 server.listen(3000, () => console.log('Server is running on port 3000.'));
